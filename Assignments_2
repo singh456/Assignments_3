@@ -1,0 +1,369 @@
+Pandas
+Pandas -Open source library in Python
+Data Manipulation and analysis
+#### Importing pandas
+import pandas as pd
+Series - One dimensional
+DataFrame-Multi dimensional
+age=pd.Series([19,24,30,41,53])
+age
+0    19
+1    24
+2    30
+3    41
+4    53
+dtype: int64
+import numpy as np
+#### alternate code
+age=pd.Series(np.array([19,24,30,41,53]))
+age
+0    19
+1    24
+2    30
+3    41
+4    53
+dtype: int32
+age=pd.Series(np.array([20,12,43,45,65,66]),index=np.arange(0,12,2))
+age
+0     20
+2     12
+4     43
+6     45
+8     65
+10    66
+dtype: int32
+age=pd.Series(np.array([20,12,43,45,65,66]),index=["A1","A2","A3","A4","A5","A6"])
+age
+A1    20
+A2    12
+A3    43
+A4    45
+A5    65
+A6    66
+dtype: int32
+prod={"Diary":23000,"Soft drinks":45000,"Fruits and Vegetables":67000}
+prod1=pd.Series(prod)
+prod1
+Diary                    23000
+Soft drinks              45000
+Fruits and Vegetables    67000
+dtype: int64
+stud={'x':["Maths","Science","English"],'y':["Maths","Science"],'z':["Science"]}
+sub=pd.Series(stud)
+sub
+x    [Maths, Science, English]
+y             [Maths, Science]
+z                    [Science]
+dtype: object
+sub[["x","y"]]
+x    [Maths, Science, English]
+y             [Maths, Science]
+dtype: object
+sub.index
+Index(['x', 'y', 'z'], dtype='object')
+sub.values
+array([list(['Maths', 'Science', 'English']), list(['Maths', 'Science']),
+       list(['Science'])], dtype=object)
+emp=np.array(["A1","A2","A3","A4","A5","A6","A7","A8","A9"])
+emp_series=pd.Series(emp)
+emp_series
+0    A1
+1    A2
+2    A3
+3    A4
+4    A5
+5    A6
+6    A7
+7    A8
+8    A9
+dtype: object
+emp_series[:5]
+0    A1
+1    A2
+2    A3
+3    A4
+4    A5
+dtype: object
+emp_series[-5:]
+4    A5
+5    A6
+6    A7
+7    A8
+8    A9
+dtype: object
+stud={'Sophia': 450,'Mia': 303, 'Philip': 432,'Emma': 150,'Lily': 293,'Grace': 112}
+stud_series=pd.Series(stud)
+stud_series
+Sophia    450
+Mia       303
+Philip    432
+Emma      150
+Lily      293
+Grace     112
+dtype: int64
+stud_series[stud_series>300]
+Sophia    450
+Mia       303
+Philip    432
+dtype: int64
+stud_series[stud_series<200]
+Emma     150
+Grace    112
+dtype: int64
+### between 200 and 300
+stud_series[(stud_series>200) & (stud_series<300)]
+Lily    293
+dtype: int64
+### Concatenation
+class1=np.linspace(0,20,11)
+class2=np.linspace(1,21,11)
+class1_series=pd.Series(class1)
+class2_series=pd.Series(class2)
+pd.concat([class1_series,class2_series])
+0      0.0
+1      2.0
+2      4.0
+3      6.0
+4      8.0
+5     10.0
+6     12.0
+7     14.0
+8     16.0
+9     18.0
+10    20.0
+0      1.0
+1      3.0
+2      5.0
+3      7.0
+4      9.0
+5     11.0
+6     13.0
+7     15.0
+8     17.0
+9     19.0
+10    21.0
+dtype: float64
+pd.concat([class1_series,class2_series],keys=["Even","Odd"],names=["category","index"])
+category  index
+Even      0         0.0
+          1         2.0
+          2         4.0
+          3         6.0
+          4         8.0
+          5        10.0
+          6        12.0
+          7        14.0
+          8        16.0
+          9        18.0
+          10       20.0
+Odd       0         1.0
+          1         3.0
+          2         5.0
+          3         7.0
+          4         9.0
+          5        11.0
+          6        13.0
+          7        15.0
+          8        17.0
+          9        19.0
+          10       21.0
+dtype: float64
+class1_series.append(class2_series,ignore_index=True)
+C:\Users\Premalatha\AppData\Local\Temp\ipykernel_9972\4230697910.py:1: FutureWarning: The series.append method is deprecated and will be removed from pandas in a future version. Use pandas.concat instead.
+  class1_series.append(class2_series,ignore_index=True)
+0      0.0
+1      2.0
+2      4.0
+3      6.0
+4      8.0
+5     10.0
+6     12.0
+7     14.0
+8     16.0
+9     18.0
+10    20.0
+11     1.0
+12     3.0
+13     5.0
+14     7.0
+15     9.0
+16    11.0
+17    13.0
+18    15.0
+19    17.0
+20    19.0
+21    21.0
+dtype: float64
+### DataFrame 
+d2={"Month":["Jan","Jan","Jan","Jan","Jan","Feb","Feb","Feb","Feb","March"],
+   "Store":['A','B','C','D','E','A','B','C','D','A'],
+   "Sales":[30124,65214,24550,34645,29314,6500,2900,4600,31500,14000]}
+
+df1=pd.DataFrame(d2)
+df1
+Month	Store	Sales
+0	Jan	A	30124
+1	Jan	B	65214
+2	Jan	C	24550
+3	Jan	D	34645
+4	Jan	E	29314
+5	Feb	A	6500
+6	Feb	B	2900
+7	Feb	C	4600
+8	Feb	D	31500
+9	March	A	14000
+df1.head()
+Month	Store	Sales
+0	Jan	A	30124
+1	Jan	B	65214
+2	Jan	C	24550
+3	Jan	D	34645
+4	Jan	E	29314
+df1.tail()
+Month	Store	Sales
+5	Feb	A	6500
+6	Feb	B	2900
+7	Feb	C	4600
+8	Feb	D	31500
+9	March	A	14000
+df1.shape
+(10, 3)
+df1.info()
+<class 'pandas.core.frame.DataFrame'>
+RangeIndex: 10 entries, 0 to 9
+Data columns (total 3 columns):
+ #   Column  Non-Null Count  Dtype 
+---  ------  --------------  ----- 
+ 0   Month   10 non-null     object
+ 1   Store   10 non-null     object
+ 2   Sales   10 non-null     int64 
+dtypes: int64(1), object(2)
+memory usage: 368.0+ bytes
+df1.dtypes
+Month    object
+Store    object
+Sales     int64
+dtype: object
+.iloc-> Retrieves the row and column by index
+.loc->Retrieve row and column by name
+df1.iloc[1]
+Month      Jan
+Store        B
+Sales    65214
+Name: 1, dtype: object
+df1.iloc[0]
+Month      Jan
+Store        A
+Sales    30124
+Name: 0, dtype: object
+df1.iloc[0]['Store']
+'A'
+df1.iloc[3:6]
+Month	Store	Sales
+3	Jan	D	34645
+4	Jan	E	29314
+5	Feb	A	6500
+df1.iloc[:,2]
+0    30124
+1    65214
+2    24550
+3    34645
+4    29314
+5     6500
+6     2900
+7     4600
+8    31500
+9    14000
+Name: Sales, dtype: int64
+df1.iloc[:,1:]
+Store	Sales
+0	A	30124
+1	B	65214
+2	C	24550
+3	D	34645
+4	E	29314
+5	A	6500
+6	B	2900
+7	C	4600
+8	D	31500
+9	A	14000
+df1.iloc[:,:2]
+Month	Store
+0	Jan	A
+1	Jan	B
+2	Jan	C
+3	Jan	D
+4	Jan	E
+5	Feb	A
+6	Feb	B
+7	Feb	C
+8	Feb	D
+9	March	A
+df1.iloc[:,[0,2]]
+Month	Sales
+0	Jan	30124
+1	Jan	65214
+2	Jan	24550
+3	Jan	34645
+4	Jan	29314
+5	Feb	6500
+6	Feb	2900
+7	Feb	4600
+8	Feb	31500
+9	March	14000
+df1.loc[1]["Sales"]
+65214
+df1
+Month	Store	Sales
+0	Jan	A	30124
+1	Jan	B	65214
+2	Jan	C	24550
+3	Jan	D	34645
+4	Jan	E	29314
+5	Feb	A	6500
+6	Feb	B	2900
+7	Feb	C	4600
+8	Feb	D	31500
+9	March	A	14000
+df1.loc[[0,1,2],["Store","Sales"]]
+Store	Sales
+0	A	30124
+1	B	65214
+2	C	24550
+### sales>30000
+df1[df1.Sales>30000]
+Month	Store	Sales
+0	Jan	A	30124
+1	Jan	B	65214
+3	Jan	D	34645
+8	Feb	D	31500
+### Get the January month sales when >30000
+df1[(df1.Month=="Jan")&(df1.Sales>30000)]
+Month	Store	Sales
+0	Jan	A	30124
+1	Jan	B	65214
+3	Jan	D	34645
+df1.sort_values("Sales")
+Month	Store	Sales
+6	Feb	B	2900
+7	Feb	C	4600
+5	Feb	A	6500
+9	March	A	14000
+2	Jan	C	24550
+4	Jan	E	29314
+0	Jan	A	30124
+8	Feb	D	31500
+3	Jan	D	34645
+1	Jan	B	65214
+df1.sort_values("Sales",ascending=False)
+Month	Store	Sales
+1	Jan	B	65214
+3	Jan	D	34645
+8	Feb	D	31500
+0	Jan	A	30124
+4	Jan	E	29314
+2	Jan	C	24550
+9	March	A	14000
+5	Feb	A	6500
+7	Feb	C	4600
+6	Feb	B	2900
