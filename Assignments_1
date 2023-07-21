@@ -1,0 +1,79 @@
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import warnings
+warnings.filterwarnings("ignore")
+### Load the dataset
+df=pd.read_csv("https://raw.githubusercontent.com/Premalatha-success/Datasets/main/iris.data",names=["Sepal.Length","Sepal.Width","Petal.Length","Petal.Width","Species"])
+df.head()
+### Top 5 rows
+df.sample(20)
+df.shape
+df.columns
+df.dtypes
+df.info()
+df.isnull().sum()
+df.describe()
+df.describe(include="all")
+df.loc[:,"Sepal.Length"].plot.hist(color="brown",alpha=0.8)
+plt.show
+df.loc[:,"Sepal.Width"].plot.hist(color="blue",alpha=0.8)
+plt.show
+df.loc[:,"Petal.Width"].plot.hist(color="hotpink",alpha=0.8)
+plt.show
+df.loc[:,"Petal.Length"].plot.hist(color="Orange",alpha=0.8)
+plt.show
+df.loc[:,"Petal.Length"].plot.hist(bins=50,color="Orange",alpha=0.8)
+plt.show
+df.loc[:,["Petal.Length","Petal.Width"]].plot.hist(bins=50,color=["Orange","green"],alpha=0.6)
+plt.show()
+freq=df.Species.value_counts()
+my_counts=list(freq.values)
+my_labels=list(freq.index)
+df1=pd.DataFrame({'counts':my_counts},index=my_labels)
+df1
+df1.plot.bar(color="black",alpha=0.7)
+plt.show()
+### Relnship 
+df.plot.scatter(x="Petal.Length",y="Petal.Width",color="green",alpha=0.3,marker="o",s=30)
+df.plot.scatter(x="Sepal.Length",y="Petal.Width",color="green",alpha=0.3,marker="o",s=30)
+df.corr()
+### Scatter plots
+my_cols={"Iris-setosa":"red","Iris-virginica":"green","Iris-versicolor":"blue"}
+my_sp=df["Species"].apply(lambda x:my_cols[x])
+pd.plotting.scatter_matrix(df,c=my_sp,marker="o",alpha=0.5,figsize=(10,7))
+plt.show()
+my_cols={"Iris-setosa":"red","Iris-virginica":"green","Iris-versicolor":"blue"}
+my_sp=df["Species"].apply(lambda x:my_cols[x])
+pd.plotting.scatter_matrix(df,c=my_sp,marker="o",alpha=0.5)
+plt.tight_layout()
+plt.show()
+import seaborn as sns
+sns.distplot(df["Sepal.Length"],color="red",bins=50,rug=True,kde=True)
+sns.kdeplot(df["Sepal.Length"],color="brown")
+plt.show()
+sns.jointplot(x="Petal.Length",y="Petal.Width",data=df,color="red",kind="scatter")
+sns.jointplot(x="Petal.Length",y="Petal.Width",data=df,color="red",kind="reg")
+sns.jointplot(x="Petal.Length",y="Petal.Width",data=df,color="red",kind="hex")
+sns.jointplot(x="Petal.Length",y="Petal.Width",data=df,color="red",kind="kde")
+sns.barplot(x="Species",y="Sepal.Length",data=df)
+sns.lmplot(x="Petal.Length",y="Petal.Width",data=df)
+sns.lmplot(x="Petal.Length",y="Petal.Width",hue="Species",data=df)
+sns.lmplot(x="Petal.Length",y="Petal.Width",hue="Species",data=df,col="Species")
+plt.show()
+sns.countplot(x="Species",data=df,palette="coolwarm")
+sns.countplot(x="Species",data=df,hue="Species")
+sns.boxplot(x="Species",y="Petal.Length",color="brown",data=df,palette="coolwarm")
+sns.boxplot(y="Sepal.Width",color="brown",data=df)
+sns.violinplot(x="Species",y="Petal.Length",data=df)
+sns.stripplot(x="Species",y="Petal.Length",data=df)
+sns.swarmplot(x="Species",y="Petal.Length",data=df)
+sns.pairplot(df,hue="Species",palette="cubehelix")
+plt.show()
+Correlation between dependent and independent variables
+x=df.corr()
+x
+sns.heatmap(x)
+sns.heatmap(x,cmap="coolwarm")
+sns.heatmap(x,cmap="viridis")
+sns.heatmap(x,cmap="viridis",annot=True)
