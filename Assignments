@@ -1,0 +1,421 @@
+import matplotlib.pyplot as plt 
+%matplotlib inline
+import numpy as np
+### Draw a line in a diagram from position (0,10) to position (5,150):
+xpoints = np.array([1,2])
+ypoints = np.array([5,10])
+
+plt.plot(xpoints, ypoints)
+plt.show()
+xpoints = np.array([1,20])
+ypoints = np.array([10,200])
+plt.plot(xpoints, ypoints)
+plt.show()
+xpoints = np.array([1, 6])
+ypoints = np.array([4,5])
+plt.plot(xpoints,ypoints,"+")
+plt.show()
+ypoints = np.array([3, 8, 1, 10])
+
+plt.plot(ypoints, '*''r')
+plt.show()
+ypoints = np.array([3, 8, 1,12])
+xpoints=np.array([5,6,7,12])
+plt.plot(xpoints,ypoints, marker = '*',ms = 20,color='k')
+plt.show()
+ypoints = np.array([3, 8, 1])
+
+plt.plot(ypoints, marker = 'o', ms = 50, mec = 'k',color='pink')
+plt.show()
+ypoints = np.array([3, 8, 1, 10])
+
+plt.plot(ypoints, marker = 'o', ms = 20,mfc='r',mec='k')
+plt.show()
+### Use both the mec and mfc arguments to color of the entire marker
+ypoints = np.array([3, 8, 1, 10])
+
+plt.plot(ypoints, marker = 'o', ms = 20, mec = 'y', mfc = 'k')
+plt.show()
+ypoints = np.array([3, 8, 1, 10])
+
+plt.plot(ypoints, linestyle = 'dashed',marker='o', mec = 'hotpink',ms=20,mfc='blue',linewidth=3)
+plt.show()
+plt.plot(ypoints, linestyle = 'dotted',marker="o",ms=25,
+         mfc="green",mec="red")
+plt.show()
+xpoints=np.array([10,20,30])
+ypoints=np.array([1,2,6])
+plt.plot(xpoints,ypoints,marker="*",color="g",mfc="b",mec="r",ms=50,linestyle="dotted")
+### You can use the keyword argument linewidth or the shorter lw to change the width of the line.
+
+### The value is a floating number, in points
+ypoints = np.array([3, 8, 1, 10])
+xpoints=np.array([2,4,6,8])
+plt.plot(xpoints,ypoints, linewidth = 1,linestyle="dotted",color="red",marker="o",ms=20,mec="g")
+plt.show()
+y1 = np.array([3, 8, 1, 10])
+y2 = np.array([6, 2, 5, 11,10,12])
+
+plt.plot(y1,color="k",marker="*")
+plt.plot(y2,color="r")
+
+plt.show()
+x = np.array([80, 85, 90, 95, 100, 105, 110, 115, 120,134])
+y = np.array([240,250, 260, 270, 280, 290, 300, 310, 320, 330])
+
+plt.plot(x, y,color="r",linewidth=1)
+
+plt.xlabel("Average Pulse",fontsize=10,color="red")
+plt.ylabel("Calorie Burnage",fontsize=10,color="g")
+plt.title("sample",fontsize=30,color="blue")
+plt.show()
+With Pyplot, you can use the title() function to set a title for the plot
+
+x = np.array([80, 85, 90, 95, 100, 105, 110, 115, 120, 125])
+y = np.array([240, 250, 260, 270, 280, 290, 300, 310, 320, 330])
+
+plt.title("Sports Watch Data",fontsize=20,color="green",loc="left")
+plt.xlabel("Average Pulse",loc="right")
+plt.ylabel("Calorie Burnage",loc="top")
+
+plt.plot(x, y)
+plt.show()
+x = np.array([80, 85, 90, 95, 100, 105,115, 120, 125,154])
+y = np.array([240, 250, 260, 270, 280, 290, 300, 310, 320, 330])
+
+plt.title("Sports Watch Data")
+plt.xlabel("Average Pulse")
+plt.ylabel("Calorie Burnage")
+
+plt.plot(x, y,color="orange")
+
+plt.grid(color="green",linestyle="dotted")
+
+plt.show()
+### You can use the axis parameter in the grid() function to specify which grid lines to display.
+
+### Legal values are: 'x', 'y', and 'both'. Default value is 'both'
+x = np.array([80, 85, 90, 95, 100, 105, 110, 115, 120, 125])
+y = np.array([240, 250, 260, 270, 280, 290, 300, 310, 320, 330])
+
+plt.title("Sports Watch Data")
+plt.xlabel("Average Pulse")
+plt.ylabel("Calorie Burnage")
+
+plt.plot(x, y)
+
+plt.grid(axis = 'x')
+
+plt.show()
+### Display only grid lines for the y-axis
+x = np.array([80, 85, 90, 95, 100, 105, 110, 115, 120, 125])
+y = np.array([240, 250, 260, 270, 280, 290, 300, 310, 320, 330])
+
+plt.title("Sports Watch Data")
+plt.xlabel("Average Pulse")
+plt.ylabel("Calorie Burnage")
+
+plt.plot(x, y)
+
+plt.grid(axis = 'y')
+
+plt.show()
+### Set Line Properties for the Grid
+### You can also set the line properties of the grid, like this: grid
+                 ### (color = 'color', linestyle = 'linestyle', linewidth = number).
+x = np.array([80, 85, 90, 95, 100, 105, 110, 115, 120,112])
+y = np.array([240, 250, 260, 270, 280, 290, 300, 310, 320, 330])
+
+plt.title("Sports Watch Data")
+plt.xlabel("Average Pulse")
+plt.ylabel("Calorie Burnage")
+
+plt.plot(x, y)
+
+plt.grid(color = 'hotpink', linestyle = '--', linewidth = 1.5)
+
+plt.show()
+#plot 1:
+x = np.array([0, 1, 2, 3])
+y = np.array([3, 8, 1, 10])
+
+plt.subplot(1,2, 1)
+plt.plot(x,y)
+
+#plot 2:
+x = np.array([0, 1, 2, 3])
+y = np.array([10, 20, 30, 40])
+
+plt.subplot(1,2,2)
+plt.plot(x,y)
+
+plt.show()
+
+The subplots() function takes three arguments that describes the layout of the figure.
+The layout is organized in rows and columns, which are represented by the first and second argument.
+The third argument represents the index of the current plot.
+plt.subplot(1, 2, 1)
+
+the figure has 1 row, 2 columns, and this plot is the first plot.
+plt.subplot(1, 2, 2)
+
+the figure has 1 row, 2 columns, and this plot is the second plot.
+x = np.array([0, 1, 2, 3])
+y = np.array([3, 8, 1, 10])
+
+plt.subplot(2, 3, 1)
+plt.plot(x,y)
+
+x = np.array([0, 1, 2, 3])
+y = np.array([10, 20, 30, 40])
+
+plt.subplot(2, 3, 2)
+plt.plot(x,y)
+
+x = np.array([0, 1, 2, 3])
+y = np.array([3, 8, 1, 10])
+
+plt.subplot(2, 3, 3)
+plt.plot(x,y)
+
+x = np.array([0, 1, 2, 3])
+y = np.array([10, 20, 30, 40])
+
+plt.subplot(2, 3, 4)
+plt.plot(x,y)
+
+x = np.array([0, 1, 2, 3])
+y = np.array([3, 8, 1, 10])
+
+plt.subplot(2, 3, 5)
+plt.plot(x,y)
+
+x = np.array([0, 1, 2, 3])
+y = np.array([10, 20, 30, 40])
+
+plt.subplot(2, 3, 6)
+plt.plot(x,y)
+
+plt.show()
+### You can add a title to each plot with the title() function
+x = np.array([0, 1, 2, 3])
+y = np.array([3, 8, 1, 10])
+
+plt.subplot(1, 2, 1)
+plt.plot(x,y)
+plt.title("SALES")
+
+#plot 2:
+x = np.array([0, 1, 2, 3])
+y = np.array([10, 20, 30, 40])
+
+plt.subplot(1, 2, 2)
+plt.plot(x,y)
+plt.title("INCOME")
+
+plt.show()
+### You can add a title to the entire figure with the suptitle() function:
+#plot 1:
+x = np.array([0, 1, 2, 3])
+y = np.array([3, 8, 1, 10])
+
+plt.subplot(1, 2, 1)
+plt.plot(x,y)
+plt.title("SALES")
+#plot 2:
+x = np.array([0, 1, 2, 3])
+y = np.array([10, 20, 30, 40])
+
+plt.subplot(1, 2, 2)
+plt.plot(x,y)
+plt.title("INCOME")
+
+plt.suptitle("MY SHOP")
+plt.show()
+x=np.array([1,2,3,4,5])
+y=np.array([5,10,15,20,25])
+plt.scatter(x,y,color="red")
+plt.xlabel("id",color="green")
+plt.ylabel("marks")
+plt.title("Reln b/w id and marks")
+plt.show()
+
+x = np.array([5,7,8,7,2,17,2,9,4,11,12,9,6])
+y = np.array([23,12,45,23,86,103,87,94,78,77,85,86,12])
+
+plt.scatter(x, y)
+plt.show()
+#day one, the age and speed of 13 cars:
+x = np.array([5,7,8,7,2,17,2,9,4,11,12,9,6])
+y = np.array([99,86,87,88,111,86,103,87,94,78,77,85,86])
+plt.scatter(x, y)
+
+#day two, the age and speed of 15 cars:
+x = np.array([2,2,8,1,15,8,12,9,7,3,11,4,7,14,12])
+y = np.array([100,105,84,105,90,99,90,95,94,100,79,112,91,80,85])
+plt.scatter(x, y)
+
+plt.show()
+### By comparing the two plots, I think it is safe to say that they both gives us the same conclusion
+###  the newer the car, the faster it drives
+x = np.array([5,7,8,7,2,17,2,9,4,11,12,9,6])
+y = np.array([99,86,87,88,111,86,103,87,94,78,77,85,86])
+plt.scatter(x, y, color = 'hotpink')
+
+x = np.array([2,2,8,1,15,8,12,9,7,3,11,4,7,14,12])
+y = np.array([100,105,84,105,90,99,90,95,94,100,79,112,91,80,85])
+plt.scatter(x, y, color = 'green')
+
+plt.show()
+x=np.array([1,2,3,4,5])
+y=np.array([6,7,8,9,10])
+colors=(["red","yellow","black","blue","green"])
+size=([10,200,30,40,50])
+plt.scatter(x,y,c=colors,s=size)
+plt.show()
+x = np.array([5,7,8,7,2,17,2,9,4,11,12,9,6])
+y = np.array([99,86,87,88,111,86,87,94,78,77,85,86,13])
+colors = np.array([0, 10, 20, 30, 40, 45, 50, 55, 60, 70, 80, 90, 100])
+
+plt.scatter(x, y, c=colors, cmap='viridis')
+
+plt.show()
+### You can include the colormap in the drawing by including the plt.colorbar() statement
+x = np.array([5,7,8,7,2,17,2,9,4,11,12,9,6])
+y = np.array([99,86,87,88,111,86,103,87,94,78,77,85,86])
+colors = np.array([0, 10, 20,30, 40, 45, 50, 55, 60, 70, 80, 90, 100])
+plt.scatter(x, y, c=colors, cmap='viridis')
+plt.colorbar()
+plt.show()
+x = np.array([5,7,8,7,2,17,2,9,4,11,12,9,6])
+y = np.array([99,86,87,88,111,86,103,87,94,78,77,85,86])
+sizes = np.array([20,50,100,200,500,1000,60,90,10,300,600,800,75])
+colors=np.array([1,2,3,4,5,6,7,8,9,10,11,12,13])
+plt.scatter(x, y, s=sizes,c=colors)
+plt.colorbar()
+plt.show()
+### Alpha :You can adjust the transparency of the dots with the alpha argument.
+
+### Just like colors, make sure the array for sizes has the same length as the arrays for the x- and y-axis.
+x = np.array([5,7,8,7,2,17,2,9,4,11,12,9,6])
+y = np.array([99,86,87,88,111,86,103,87,94,78,77,85,86])
+sizes = np.array([20,50,100,200,500,1000,60,90,10,300,600,800,75])
+plt.scatter(x, y, s=sizes, alpha=0.3,color="r")
+
+plt.show()
+x = np.random.randint(100, size=(100))
+y = np.random.randint(50, size=(100))
+colors = np.random.randint(100, size=(100))
+sizes = 10 * np.random.randint(100, size=(100))
+
+plt.scatter(x, y, c=colors, s=sizes, alpha=0.5, cmap='nipy_spectral')
+
+plt.colorbar()
+
+plt.show()
+x = np.array(["A", "B", "C", "D"])
+y = np.array([3, 8,1,10])
+
+plt.bar(x,y,color="black")
+plt.show()
+### If you want the bars to be displayed horizontally instead of vertically, use the barh() function.
+
+
+x = np.array(["A", "B", "C", "D"])
+y = np.array([3, 8, 1, 10])
+
+plt.barh(x, y,color="green")
+
+plt.show()
+x = np.array(["A", "B", "C", "D"])
+y = np.array([3, 8, 1, 10])
+
+plt.bar(x, y, width = 0.05)
+plt.show()
+## The barh() takes the keyword argument height to set the height of the bars
+x = np.array(["A", "B", "C", "D"])
+y = np.array([3, 8, 1, 10])
+
+plt.barh(x, y, height = 0.1)
+plt.show()
+x = np.random.normal(15,10,1000)
+x
+plt.hist(x)
+plt.show()
+x = np.random.normal(100,5,2500)
+plt.hist(x)
+plt.show()
+y = np.array([10, 135, 25, 15,19])
+
+plt.pie(y)
+plt.show() 
+### Add labels to the pie chart with the label parameter.
+
+### The label parameter must be an array with one label for each wedge
+y = np.array([10, 25,15,10])
+mylabels = ["Cherries","Apples", "Bananas","Dates"]
+
+plt.pie(y, labels = mylabels)
+plt.show() 
+### As mentioned the default start angle is at the x-axis, but you can change the start angle 
+### by specifying a startangle parameter.
+
+### The startangle parameter is defined with an angle in degrees, default angle is 0:
+y = np.array([35, 25, 25, 15])
+mylabels = ["Apples", "Bananas", "Cherries", "Dates"]
+
+plt.pie(y, labels = mylabels, startangle = 180)
+plt.show() 
+y = np.array([35, 25, 25, 15])
+mylabels = ["Apples", "Bananas", "Cherries", "Dates"]
+myexplode = [0,0.95, 0.2, 1]
+
+plt.pie(y, labels = mylabels, explode = myexplode)
+plt.show() 
+y = np.array([25,25,25,100])
+mylabels = ["Apples", "Bananas", "Cherries", "Dates"]
+mycolors = ["black", "hotpink", "b", "yellow"]
+
+plt.pie(y, labels = mylabels, colors = mycolors,startangle=180)
+plt.show() 
+y = np.array([35, 25, 25, 15])
+#mylabels = ["Apples", "Bananas", "Cherries", "Dates"]
+
+plt.pie(y)
+plt.legend(labels=mylabels)
+plt.show() 
+import numpy as np
+import pandas as pd
+import matplotlib.pyplot as plt
+import seaborn as sns
+df=pd.read_csv("https://raw.githubusercontent.com/Premalatha-success/HHE_14th-Aug/main/loan_prediction.csv")
+df.head(10)
+df.shape
+df.columns
+df.dtypes
+df.describe()
+df.describe(include="all")
+df.info()
+df.isnull().sum()
+ 
+import matplotlib.pyplot as plt
+import numpy as np
+x=np.random.randn(10000)
+plt.hist(x,bins=20,color="green",density=True)
+plt.title("HISTOGRAM")
+image.png
+
+image.png
+
+x=np.random.randn(10000)*10+3
+y=np.random.randn(10000)*10+5
+z=np.random.randn(10000)*10+2
+plt.boxplot([x,y,z],vert=False)
+plt.show()
+x=np.linspace(0,10,100)
+y=np.sin(x)
+plt.plot(x,y,color="hotpink",marker="o",ms=15,mfc="yellow",mec="purple",mew=2,alpha=0.2)
+plt.xlabel("X")
+plt.ylabel("Sin")
+plt.title("Line plot")
+plt.show
